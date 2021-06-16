@@ -7,6 +7,38 @@ $(document).ready(function () {
 const uri = "/api/Sellerslists"; //api/Sellerslists the api as a controller name
 let allSellers = null; //holds the data 
 
+
+function hide() {
+
+
+    $(document.getElementById('addSellerModal')).hide();
+
+
+
+}
+function show() {
+    document.ready();
+
+}
+
+//validation for choosing numbers only instead of alpabhets
+
+function validatation() {
+
+    var x = document.forms["myForm"]["num"].value;
+    if (!x.match(/^\d+/)) {
+        document.getElementById('add-rating').value = 'Please fill the Number ';
+        hide();
+    }
+    else {
+
+
+        addSeller();
+
+    }
+}
+
+
 //this function reloads the table 
 function LoadTable() {
     $.ajax({
@@ -80,6 +112,8 @@ function addItem() {
             $("#add-Commission").val("");
 
             alert("Successfully Seller added!!");
+            LoadTable();
+            location.reload();
         }
     });
 }
